@@ -2,7 +2,7 @@
 
 namespace Sporty.UserProfile.Web.Controllers.Dto;
 
-public class UserAuthDto
+public class UserUpdateDto
 {
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Email is incorrect")]
