@@ -4,12 +4,13 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Sporty.UserProfile.Core.Users.Repositories;
+using Sporty.UserProfile.Core.Users.Services.Interfaces;
 using Sporty.UserProfile.Domain.Encoders;
 using Sporty.UserProfile.Domain.Exceptions;
 
 namespace Sporty.UserProfile.Core.Users.Services;
 
-public class UserService
+public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IConfiguration _configuration;
