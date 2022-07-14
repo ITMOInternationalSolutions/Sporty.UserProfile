@@ -2,6 +2,7 @@
 using Sporty.UserProfile.Core.Organizations.Services.Interfaces;
 using Sporty.UserProfile.Core.Users;
 using Sporty.UserProfile.Core.Users.Repositories;
+using Sporty.UserProfile.Domain.Exceptions;
 
 namespace Sporty.UserProfile.Core.Organizations.Services;
 
@@ -25,7 +26,7 @@ public class OrganizationService : IOrganizationService
     {
         var organizations = await _organizationsRepository.GetAllAsync(cancellationToken);
 
-        return organizations.Where(o => 
+        return organizations.Where(o =>
             o.Members.Any(m => m.Id == userId) ||
             o.Organizers.Any(org => org.Id == userId)).ToList();
     }
@@ -57,21 +58,29 @@ public class OrganizationService : IOrganizationService
         await _organizationsRepository.CreateAsync(organization, cancellationToken);
     }
 
-    public async Task AddMemberAsync(Guid organizationId, Guid memberId, CancellationToken cancellationToken)
+    public async Task AddMemberAsync(Guid organizationId, string memberEmail, CancellationToken cancellationToken)
     {
+        var member = await _userRepository.GetByEmailAsync(memberEmail, cancellationToken);
         var organization = await _organizationsRepository.GetByIdAsync(organizationId, cancellationToken);
-        var member = await _userRepository.GetByIdAsync(memberId, cancellationToken);
+        if (organization.Members.Any(o => o.Id == member.Id))
+        {
+            throw new DataOccupiedException("This user is already member.");
+        }
         
         organization.Members.Add(member);
 
         await _organizationsRepository.UpdateAsync(organization, cancellationToken);
     }
 
-    public async Task AddOrganizer(Guid organizationId, Guid organizerId, CancellationToken cancellationToken)
+    public async Task AddOrganizerAsync(Guid organizationId, string organizerEmail, CancellationToken cancellationToken)
     {
+        var organizer = await _userRepository.GetByEmailAsync(organizerEmail, cancellationToken);
         var organization = await _organizationsRepository.GetByIdAsync(organizationId, cancellationToken);
-        var organizer = await _userRepository.GetByIdAsync(organizerId, cancellationToken);
-        
+        if (organization.Organizers.Any(o => o.Id == organizer.Id))
+        {
+            throw new DataOccupiedException("This user is already organizer.");
+        }
+
         organization.Organizers.Add(organizer);
 
         await _organizationsRepository.UpdateAsync(organization, cancellationToken);

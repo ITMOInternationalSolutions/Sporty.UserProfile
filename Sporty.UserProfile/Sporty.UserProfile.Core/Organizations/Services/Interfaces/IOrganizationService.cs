@@ -9,7 +9,7 @@ public interface IOrganizationService
     Task<IReadOnlyList<Organization>> GetByNameAsync(string name, CancellationToken cancellationToken);
     Task<List<Organization>> GetAllAsync(CancellationToken cancellationToken);
     Task CreateAsync(string name, Guid creatorId, CancellationToken cancellationToken);
-    Task AddMemberAsync(Guid organizationId, Guid memberId, CancellationToken cancellationToken);
-    Task AddOrganizer(Guid organizationId, Guid organizerId, CancellationToken cancellationToken);
+    Task AddMemberAsync(Guid organizationId, string memberEmail, CancellationToken cancellationToken);
+    Task AddOrganizerAsync(Guid organizationId, string organizerEmail, CancellationToken cancellationToken);
     Task DeleteAsync(Guid organizationId, CancellationToken cancellationToken);
 }

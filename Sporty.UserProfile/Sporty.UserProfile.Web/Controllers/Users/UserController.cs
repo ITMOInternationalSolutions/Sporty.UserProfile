@@ -73,7 +73,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="token">Token that is used to verify the user. Token locates on header "Token".</param>
     /// <param name="cancellationToken">A CancellationToken to observe while waiting for the task to complete.</param>
-    /// <returns>User model which contains: Id, email, discordId, AccountType.</returns>
+    /// <returns>User model which contains: Id, email.</returns>
     [HttpGet("get")]
     [AuthorizationFilter]
     public async Task<UserDto> Get(
@@ -97,7 +97,7 @@ public class UserController : ControllerBase
     /// Update a user model if token hasn't expired yet.
     /// </summary>
     /// <param name="token">Token that is used to verify the user. Token locates on header "Token".</param>
-    /// <param name="userUpdateDto">User model which contains: ID, email, AccountType, DiscordId.</param>
+    /// <param name="userUpdateDto">User model which contains: ID, email.</param>
     /// <param name="cancellationToken">A CancellationToken to observe while waiting for the task to complete.</param>
     [HttpPut("put")]
     [AuthorizationFilter]

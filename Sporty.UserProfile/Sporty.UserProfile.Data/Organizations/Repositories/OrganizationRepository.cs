@@ -29,9 +29,17 @@ public class OrganizationRepository : IOrganizationsRepository
         return new Organization
         {
             Id = entity.Id,
-            Members = entity.Members.Select(m => new User { Email = m.Email, Id = m.Id }).ToList(),
+            Members = entity.Members?.Select(m => new User
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList(),
             Name = entity.Name,
-            Organizers = entity.Organizers.Select(o => new User { Email = o.Email, Id = o.Id }).ToList()
+            Organizers = entity.Organizers?.Select(org => new User
+            {
+                Email = org.Email,
+                Id = org.Id
+            }).ToList()
         };
     }
 
@@ -40,20 +48,36 @@ public class OrganizationRepository : IOrganizationsRepository
         return _context.Organizations.Select(o => new Organization
         {
             Id = o.Id,
-            Members = o.Members.Select(m => new User { Email = m.Email, Id = m.Id }).ToList(),
+            Members = o.Members.Select(m => new User
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList(),
             Name = o.Name,
-            Organizers = o.Organizers.Select(org => new User { Email = org.Email, Id = org.Id }).ToList()
+            Organizers = o.Organizers.Select(org => new User
+            {
+                Email = org.Email,
+                Id = org.Id
+            }).ToList()
         }).ToListAsync(cancellationToken);
     }
 
     public async Task CreateAsync(Organization organization, CancellationToken cancellationToken)
     {
-        var entity = new OrganizationDbModel()
+        var entity = new OrganizationDbModel
         {
             Id = organization.Id,
-            Members = organization.Members.Select(m => new UserDbModel { Email = m.Email, Id = m.Id }).ToList(),
+            Members = organization.Members?.Select(m => new Member
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList(),
             Name = organization.Name,
-            Organizers = organization.Organizers.Select(o => new UserDbModel { Email = o.Email, Id = o.Id }).ToList()
+            Organizers = organization.Organizers?.Select(m => new Organizer
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList()
         };
 
         _context.Organizations.Add(entity);
@@ -62,11 +86,19 @@ public class OrganizationRepository : IOrganizationsRepository
 
     public async Task UpdateAsync(Organization organization, CancellationToken cancellationToken)
     {
-        var entity = new OrganizationDbModel()
+        var entity = new OrganizationDbModel
         {
-            Members = organization.Members.Select(m => new UserDbModel { Email = m.Email, Id = m.Id }).ToList(),
+            Members = organization.Members?.Select(m => new Member
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList(),
             Name = organization.Name,
-            Organizers = organization.Organizers.Select(o => new UserDbModel { Email = o.Email, Id = o.Id }).ToList()
+            Organizers = organization.Organizers?.Select(m => new Organizer
+            {
+                Email = m.Email,
+                Id = m.Id
+            }).ToList()
         };
 
         _context.Organizations.Add(entity);

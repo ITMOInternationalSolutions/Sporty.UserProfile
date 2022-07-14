@@ -31,9 +31,9 @@ namespace Sporty.UserProfile.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrganizationDbModel>()
-                .HasMany<UserDbModel>(o => o.Members);
+                .HasMany(o => o.Members);
             modelBuilder.Entity<OrganizationDbModel>()
-                .HasMany<UserDbModel>(o => o.Organizers);
+                .HasMany(o => o.Organizers);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -8,5 +8,5 @@ public class UserDto
 
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Email is incorrect")]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 }
