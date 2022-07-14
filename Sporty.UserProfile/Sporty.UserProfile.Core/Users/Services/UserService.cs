@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Sporty.UserProfile.Core.Users.Entities;
 using Sporty.UserProfile.Core.Users.Repositories;
 using Sporty.UserProfile.Core.Users.Services.Interfaces;
 using Sporty.UserProfile.Domain.Encoders;

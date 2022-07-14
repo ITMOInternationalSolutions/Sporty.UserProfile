@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Sporty.UserProfile.Core.Users.Entities;
 
 namespace Sporty.UserProfile.Web.Controllers.Dto;
 
@@ -11,4 +12,7 @@ public class UserAuthDto
     [Required(ErrorMessage = "Password is required")]
     [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
     public string Password { get; set; }
+    
+    [Required(ErrorMessage = "UserType is required")]
+    public UserType UserType { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sporty.UserProfile.Core.Users;
+using Sporty.UserProfile.Core.Users.Entities;
 using Sporty.UserProfile.Core.Users.Repositories;
 using Sporty.UserProfile.Domain.Exceptions;
 
@@ -77,7 +78,8 @@ public class UserRepository : IUserRepository
         {
             Id = user.Id,
             Email = user.Email,
-            Password = user.Password
+            Password = user.Password,
+            UserType = user.UserType
         };
 
         await _context.Users.AddAsync(entity, cancellationToken);
