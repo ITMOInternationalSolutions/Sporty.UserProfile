@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Sporty.UserProfile.Core.Users;
 using Sporty.UserProfile.Core.Users.Services.Interfaces;
-using Sporty.UserProfile.Web.Controllers.Dto;
+using Sporty.UserProfile.Web.Controllers.Users.Dto;
 using Sporty.UserProfile.Web.Extensions;
 
-namespace Sporty.UserProfile.Web.Controllers;
+namespace Sporty.UserProfile.Web.Controllers.Users;
 
 [ApiController]
 [Route("user")]

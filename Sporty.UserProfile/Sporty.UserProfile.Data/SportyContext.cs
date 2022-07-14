@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Sporty.UserProfile.Data.Organizations;
 using Sporty.UserProfile.Data.Users;
 
 namespace Sporty.UserProfile.Data
@@ -7,6 +8,7 @@ namespace Sporty.UserProfile.Data
     public class SportyContext : DbContext
     {
         public DbSet<UserDbModel> Users { get; set; }
+        public DbSet<OrganizationDbModel> Organizations { get; set; }
 
         public string ConnectionString { get; }
 
@@ -28,6 +30,10 @@ namespace Sporty.UserProfile.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrganizationDbModel>()
+                .HasMany<UserDbModel>(o => o.Members);
+            modelBuilder.Entity<OrganizationDbModel>()
+                .HasMany<UserDbModel>(o => o.Organizers);
             base.OnModelCreating(modelBuilder);
         }
     }

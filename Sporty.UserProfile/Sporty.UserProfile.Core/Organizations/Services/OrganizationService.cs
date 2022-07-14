@@ -37,7 +37,7 @@ public class OrganizationService : IOrganizationService
         return organizations.Where(o => o.Name.Contains(name)).ToList();
     }
 
-    public Task<IReadOnlyList<Organization>> GetAllAsync(CancellationToken cancellationToken)
+    public Task<List<Organization>> GetAllAsync(CancellationToken cancellationToken)
     {
         return _organizationsRepository.GetAllAsync(cancellationToken);
     }

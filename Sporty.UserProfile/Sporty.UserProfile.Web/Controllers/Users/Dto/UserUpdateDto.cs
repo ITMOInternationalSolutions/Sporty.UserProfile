@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sporty.UserProfile.Web.Controllers.Dto;
+namespace Sporty.UserProfile.Web.Controllers.Users.Dto;
 
 public class UserUpdateDto
 {
