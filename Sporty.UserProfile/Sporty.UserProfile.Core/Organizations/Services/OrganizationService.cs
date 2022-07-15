@@ -66,10 +66,8 @@ public class OrganizationService : IOrganizationService
         {
             throw new DataOccupiedException("This user is already member.");
         }
-        
-        organization.Members.Add(member);
 
-        await _organizationsRepository.UpdateAsync(organization, cancellationToken);
+        await _organizationsRepository.AddMember(organizationId, member, cancellationToken);
     }
 
     public async Task AddOrganizerAsync(Guid organizationId, string organizerEmail, CancellationToken cancellationToken)
@@ -81,9 +79,7 @@ public class OrganizationService : IOrganizationService
             throw new DataOccupiedException("This user is already organizer.");
         }
 
-        organization.Organizers.Add(organizer);
-
-        await _organizationsRepository.UpdateAsync(organization, cancellationToken);
+        await _organizationsRepository.AddOrganizer(organizationId, organizer, cancellationToken);
     }
 
     public Task DeleteAsync(Guid organizationId, CancellationToken cancellationToken)
