@@ -1,4 +1,6 @@
-﻿namespace Sporty.UserProfile.Core.Users.Repositories;
+﻿using Sporty.UserProfile.Core.Users.Entities;
+
+namespace Sporty.UserProfile.Core.Users.Repositories;
 
 public interface IUserRepository
 {

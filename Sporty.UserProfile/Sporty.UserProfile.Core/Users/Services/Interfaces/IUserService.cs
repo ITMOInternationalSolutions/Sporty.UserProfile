@@ -1,4 +1,6 @@
-﻿namespace Sporty.UserProfile.Core.Users.Services.Interfaces;
+﻿using Sporty.UserProfile.Core.Users.Entities;
+
+namespace Sporty.UserProfile.Core.Users.Services.Interfaces;
 
 public interface IUserService
 {

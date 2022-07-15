@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sporty.UserProfile.Web.Controllers.Users.Dto;
+namespace Sporty.UserProfile.Web.Controllers.Dto;
 
 public class UserDto
 {
