@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using Sporty.UserProfile.Core.Users.Entities;
+using Sporty.UserProfile.Core.Users;
 using Sporty.UserProfile.Core.Users.Services.Interfaces;
+using Sporty.UserProfile.Web.Controllers.Dto;
 using Sporty.UserProfile.Web.Controllers.Users.Dto;
 using Sporty.UserProfile.Web.Extensions;
 
@@ -37,8 +38,7 @@ public class UserController : ControllerBase
         var user = new User
         {
             Email = userAuthDto.Email,
-            Password = userAuthDto.Password,
-            UserType = userAuthDto.UserType
+            Password = userAuthDto.Password
         };
         var str = await _userService.RegisterAsync(user, cancellationToken);
         _logger.LogInformation("User successfully registered");
@@ -61,8 +61,7 @@ public class UserController : ControllerBase
         var user = new User
         {
             Email = userAuthDto.Email,
-            Password = userAuthDto.Password,
-            UserType = userAuthDto.UserType
+            Password = userAuthDto.Password
         };
 
         var str = await _userService.LoginAsync(user, cancellationToken);
@@ -91,8 +90,7 @@ public class UserController : ControllerBase
         return new UserDto
         {
             Id = user.Id,
-            Email = user.Email,
-            UserType = user.UserType
+            Email = user.Email
         };
     }
 

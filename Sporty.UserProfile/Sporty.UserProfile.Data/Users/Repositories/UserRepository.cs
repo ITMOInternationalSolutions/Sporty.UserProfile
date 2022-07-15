@@ -78,8 +78,7 @@ public class UserRepository : IUserRepository
         {
             Id = user.Id,
             Email = user.Email,
-            Password = user.Password,
-            UserType = user.UserType
+            Password = user.Password
         };
 
         await _context.Users.AddAsync(entity, cancellationToken);

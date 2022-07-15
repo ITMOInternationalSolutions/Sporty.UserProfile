@@ -34,14 +34,6 @@ namespace Sporty.UserProfile.Data
                 .HasMany(o => o.Members);
             modelBuilder.Entity<OrganizationDbModel>()
                 .HasMany(o => o.Organizers);
-            modelBuilder.Entity<Organizer>()
-                .Property(o => o.Id)
-                .IsRequired()
-                .ValueGeneratedNever();
-            modelBuilder.Entity<Member>()
-                .Property(m => m.Id)
-                .IsRequired()
-                .ValueGeneratedNever();
             base.OnModelCreating(modelBuilder);
         }
     }

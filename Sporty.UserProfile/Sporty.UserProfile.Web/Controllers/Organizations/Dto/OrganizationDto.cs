@@ -1,5 +1,4 @@
-﻿using Sporty.UserProfile.Web.Controllers.Users.Dto;
-
+﻿using Sporty.UserProfile.Web.Controllers.Dto;
 namespace Sporty.UserProfile.Web.Controllers.Organizations.Dto;
 
 public class OrganizationDto

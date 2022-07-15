@@ -34,13 +34,13 @@ public class OrganizationRepository : IOrganizationsRepository
             Members = entity.Members.Select(m => new User
             {
                 Email = m.Email,
-                Id = m.Id
+                Id = m.UserId
             }).ToList(),
             Name = entity.Name,
             Organizers = entity.Organizers.Select(org => new User
             {
                 Email = org.Email,
-                Id = org.Id
+                Id = org.UserId
             }).ToList()
         };
     }
@@ -57,13 +57,13 @@ public class OrganizationRepository : IOrganizationsRepository
                 Members = o.Members.Select(m => new User
                 {
                     Email = m.Email,
-                    Id = m.Id
+                    Id = m.UserId
                 }).ToList(),
                 Name = o.Name,
                 Organizers = o.Organizers.Select(org => new User
                 {
                     Email = org.Email,
-                    Id = org.Id
+                    Id = org.UserId
                 }).ToList()
             }).ToListAsync(cancellationToken);
     }
@@ -76,13 +76,13 @@ public class OrganizationRepository : IOrganizationsRepository
             Members = organization.Members.Select(m => new Member
             {
                 Email = m.Email,
-                Id = m.Id
+                UserId = m.Id
             }).ToList(),
             Name = organization.Name,
             Organizers = organization.Organizers.Select(m => new Organizer
             {
                 Email = m.Email,
-                Id = m.Id
+                UserId = m.Id
             }).ToList()
         };
 
@@ -103,7 +103,7 @@ public class OrganizationRepository : IOrganizationsRepository
         members.Add(new Member
         {
             Email = member.Email,
-            Id = member.Id
+            UserId = member.Id
         });
         entity.Members = members;
 
@@ -123,7 +123,7 @@ public class OrganizationRepository : IOrganizationsRepository
         entity.Organizers.Add(new Organizer
         {
             Email = organizer.Email,
-            Id = organizer.Id
+            UserId = organizer.Id
         });
 
         _context.Organizations.Update(entity);

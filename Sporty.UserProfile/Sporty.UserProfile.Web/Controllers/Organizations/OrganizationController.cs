@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sporty.UserProfile.Core.Organizations.Services.Interfaces;
 using Sporty.UserProfile.Domain.Exceptions;
+using Sporty.UserProfile.Web.Controllers.Dto;
 using Sporty.UserProfile.Web.Controllers.Organizations.Dto;
 using Sporty.UserProfile.Web.Controllers.Users.Dto;
 using Sporty.UserProfile.Web.Extensions;
